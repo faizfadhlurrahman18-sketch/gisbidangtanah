@@ -212,11 +212,61 @@
       padding:0;
       line-height:0; /* pastikan isi tombol tidak mengganggu vertikal centering */
     }
-    .pw-toggle svg{ width:18px; height:18px; stroke:#445; fill:none; stroke-width:1.6; display:block; vertical-align:middle; }
+    .pw-toggle svg{ width:18px; height:18px; stroke:#445; fill:none; stroke-width:1.6; display:block; }
     .pw-toggle[aria-pressed="true"] svg{ stroke:#1976d2; }
     .pw-toggle .icon-eye-off{ display:none; }
     .pw-toggle[aria-pressed="true"] .icon-eye{ display:none; }
     .pw-toggle[aria-pressed="true"] .icon-eye-off{ display:block; }
+  </style>
+  <style>
+    /* Responsive background & box for mobile */
+    @media (max-width: 600px) {
+      body {
+        background: linear-gradient(120deg, #0f1f33 70%, #1976d2 100%), #0f1f33;
+      }
+      .main-content {
+        align-items: flex-start;
+        padding-top: 32px;
+        min-height: 100vh;
+      }
+      .box {
+        width: 98vw;
+        max-width: 370px;
+        min-width: 0;
+        padding: 18px 6vw 22px 6vw;
+        border-radius: 12px;
+        margin: 0 1vw;
+      }
+      .bg-map {
+        width: 95vw;
+        max-width: 420px;
+        height: 38vw;
+        max-height: 220px;
+        min-width: 220px;
+        min-height: 120px;
+        opacity: 0.10;
+        filter: blur(2.2px);
+      }
+      .bg-pattern {
+        opacity: 0.07;
+        background-size: 18px 18px;
+      }
+      img.logo {
+        width: 68px;
+        height: 68px;
+        padding: 6px;
+        margin-bottom: 10px;
+      }
+    }
+    @media (max-width: 400px) {
+      .box {
+        padding: 10px 2vw 16px 2vw;
+      }
+      .bg-map {
+        min-width: 120px;
+        min-height: 60px;
+      }
+    }
   </style>
 </head>
 <body>
