@@ -14,8 +14,8 @@
       margin:0;
       font-family:Arial,sans-serif;
       min-height:100vh;
-      background:linear-gradient(120deg, #0f1f33 60%, #1976d2 100%),
-                  #0f1f33;
+      /* Hilangkan warna solid di belakang gradient */
+      background: linear-gradient(120deg, #0f1f33 0%, #1976d2 100%);
       position:relative;
     }
     .main-content {
@@ -27,9 +27,13 @@
     .bg-pattern {
       pointer-events:none;
       position:fixed; inset:0; z-index:0; opacity:0.10;
-      background-image:linear-gradient(0deg,transparent 24px,#fff2 25px),
-                        linear-gradient(90deg,transparent 24px,#fff2 25px);
-      background-size:25px 25px;
+      /* Tambahkan radial gradient transparan agar grid tidak abrupt di tepi */
+      background-image:
+        linear-gradient(0deg, transparent 24px, #fff2 25px),
+        linear-gradient(90deg, transparent 24px, #fff2 25px),
+        radial-gradient(ellipse at bottom right, rgba(25,118,210,0.08) 0%, transparent 80%);
+      background-size: 25px 25px, 25px 25px, 100% 100%;
+      background-position: 0 0, 0 0, 0 0;
     }
     .bg-map {
       pointer-events:none;
@@ -85,6 +89,56 @@
     @keyframes slideOut { from{opacity:1;transform:translateY(0);} to{opacity:0;transform:translateY(-30px);} }
     @keyframes scaleIn { from{opacity:0;transform:scale(.92);} to{opacity:1;transform:scale(1);} }
     @keyframes scaleOut { from{opacity:1;transform:scale(1);} to{opacity:0;transform:scale(.9);} }
+
+    /* Responsive background & box for mobile */
+    @media (max-width: 600px) {
+      body {
+        /* Gradient tetap tanpa warna solid, lebih smooth */
+        background: linear-gradient(120deg, #0f1f33 0%, #1976d2 100%);
+      }
+      .main-content {
+        align-items: flex-start;
+        padding-top: 32px;
+        min-height: 100vh;
+      }
+      .box {
+        width: 98vw;
+        max-width: 370px;
+        min-width: 0;
+        padding: 18px 6vw 22px 6vw;
+        border-radius: 12px;
+        margin: 0 1vw;
+      }
+      .bg-map {
+        width: 95vw;
+        max-width: 420px;
+        height: 38vw;
+        max-height: 220px;
+        min-width: 220px;
+        min-height: 120px;
+        opacity: 0.10;
+        filter: blur(2.2px);
+      }
+      .bg-pattern {
+        opacity: 0.07;
+        background-size: 18px 18px;
+      }
+      img.logo {
+        width: 68px;
+        height: 68px;
+        padding: 6px;
+        margin-bottom: 10px;
+      }
+    }
+    @media (max-width: 400px) {
+      .box {
+        padding: 10px 2vw 16px 2vw;
+      }
+      .bg-map {
+        min-width: 120px;
+        min-height: 60px;
+      }
+    }
   </style>
 </head>
 <body>
